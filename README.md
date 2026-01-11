@@ -24,6 +24,9 @@ No dependencies.
 After CLIP Text Encode (Prompt) → before KSampler.
 ![](images/node.png)
 
+stack method:
+![](images/node2.png)
+
 ### Parameters Explained
 
 | Parameter              | Type    | Default | Range             | What it does                                                                                       | Typical use / effect                                                                 |
