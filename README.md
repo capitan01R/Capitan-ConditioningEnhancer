@@ -34,7 +34,7 @@ Markdown### Surreal Cat-Tiger Split Prompt
 <details>
 <summary>Click to view full prompt</summary>
 Close-up front-facing portrait of a cute innocent orange domestic house cat's head, perfectly vertically split down the center. Left half is a solid matte black domestic cat with short fur and one glowing yellow eye. Right half is a prehistoric saber-tooth tiger with thick white fur, bold grey stripes, massive thickened jaw, and one extremely long curved ivory saber tooth fully visible. The right half is slowly disintegrating into fine ethereal white dust and smoke particles drifting away, leaving a faint ghostly grey translucent shadow of the tiger shape behind. The cat's mouth is open in a soft mew, with the right-side teeth hazy and fading. Dark charcoal void background to highlight the dust particles and black fur. High detail, sharp contrast, surreal horror style, no blending between halves, tiger side remains fully distinct until the very end.
-text</details>
+</details>
 
 ### Parameters Explained
 
