@@ -29,7 +29,7 @@ stack method:
 
 ## Grid examples:
 ![](images/horizontal_tiger_grid.png)
-Markdown### Surreal Cat-Tiger Split Prompt
+
 
 <details>
 <summary>Click to view full prompt</summary>
