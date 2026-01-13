@@ -1,4 +1,4 @@
-## Capitan Conditioning Enhancer
+## Capitan Conditioning Enhancer (basic)
 Lightweight post-processing node for Qwen3-4B conditioning in Z-Image Turbo workflows.
 Refines the 2560-dim CONDITIONING from native Qwen3-4B text encoder with:
 
@@ -64,3 +64,62 @@ Warnings
 High strength (>0.4) + high mlp_hidden_mult + self-attention → rainbow artifacts / noise likely.
 Very high mult (60+) needs extremely low strength (≤0.05).
 Always test same seed first. Negative strength + high mult usually safer than positive.
+
+
+### Update: Added Capitan Advanced Enhancer (v1.1)
+
+**The original Conditioning Enhancer (Basic)** remains completely untouched — only optional seed support was added for reproducible initialization (default 42).
+
+New node added: **Capitan Advanced Enhancer** (experimental upgrade)
+
+This node builds directly on the same core logic as the Basic (normalization → MLP refinement → blend → optional attention) but adds more controls for **maximum literal prompt adherence** and detail sharpness.
+
+**Key new parameters**:
+
+- **detail_boost** (FLOAT, range 0.0–4.0)  
+  Amplifies high-frequency differences for sharper edges, textures, and fine details.  
+  Optimal settings: 1.8–2.5
+
+- **preserve_original** (FLOAT, range 0.0–1.0)  
+  Stronger skip connection — mixes more raw original embeddings back in to anchor stability and prevent over-refinement at high mult.  
+  Optimal settings: 0.35–0.50
+
+- **attention_strength** (FLOAT, range 0.0–0.8)  
+  Tunable control over self-attention mixing (only when add_self_attention = true).  
+  Optimal settings: 0.0–0.1 (low/off for max literal)
+
+- **high_pass_filter** (BOOLEAN)  
+  Extra edge/detail emphasis by subtracting a low-pass (blurry) version from the refined embeddings.  
+  Optimal settings: true
+
+The node also includes built-in safety (clamping + dynamic residual scaling) to handle extreme `mlp_hidden_mult` (up to 100) without artifacts.
+
+**Best use** — Stack after the Basic Enhancer:  
+- Basic: gentle glue/stabilization (low mult, self-attn on)  
+- Advanced: surgical literal boost (high mult, low strength, self-attn off)  
+
+**Warning**: Start with very low `enhance_strength` (0.03–0.10) when using high `mlp_hidden_mult` (50–100) — over-refinement can cause noise or shifts. Always test same seed.
+
+This update keeps the original Basic node unchanged (except for optional seed) and adds advanced control for users who want to push detail retention harder.
+
+![](images/node_3.png)
+
+
+## Grid examples:
+![](images/horizontal_tiger_grid_new.png)
+
+
+### Parameters Explained (Capitan Advanced Enhancer)
+
+| Parameter              | Type    | Default | Range             | What it does                                                                                       | Typical use / effect                                                                 |
+|------------------------|---------|---------|-------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| enhance_strength       | FLOAT   | 0.05    | -3.0 → 2.0        | Positive: blends in the refined version (more detail), Negative: subtracts refinement (sharper, anti-smoothing) | 0.03–0.08 = max literal adherence (low to avoid over-processing)<br>Negative = crisp/raw look<br>>0.2 = high risk of noise |
+| detail_boost           | FLOAT   | 1.5     | 0.0 → 4.0         | Amplifies high-frequency differences (sharp edges, textures, particles) after MLP refinement     | 1.8–2.5 = strong literal detail pop (stripes, tooth curve, dust)<br>>3.0 = risk of halos/noise |
+| preserve_original      | FLOAT   | 0.2     | 0.0 → 1.0         | Stronger skip connection — mixes more raw original embeddings back in to anchor stability        | 0.35–0.50 = prevents collapse/over-refinement at high mult<br>0.0 = full advanced power |
+| attention_strength     | FLOAT   | 0.2     | 0.0 → 0.8         | Controls self-attention mixing strength (only when add_self_attention = true)                    | 0.0–0.1 = max crisp/literal (off)<br>0.2–0.4 = subtle cohesion<br>>0.5 = smoothing risk |
+| high_pass_filter       | BOOLEAN | true    | true/false        | Subtracts low-pass (blurry) version to emphasize high-frequency edges/details                    | true = extra sharpness (tiger jaw/tooth/dust distinct)<br>false = if halos appear |
+| normalize              | BOOLEAN | true    | true/false        | Per-token mean subtraction + unit variance normalization                                         | Almost always true — stability & cleaner generations                                 |
+| add_self_attention     | BOOLEAN | false   | true/false        | Light 8-head self-attention across tokens (distant prompt parts influence each other)            | false = max literal control<br>true = better scene unity (use low attention_strength) |
+| mlp_hidden_mult        | INT     | 50      | 1 → 100           | Hidden layer width multiplier for MLP (2560 → 2560×mult → 2560)                                  | 50–100 = hyper-literal detail (sweet spot ~70)<br>2–10 = balanced (like basic node) |
+| seed                   | INT     | 42      | 0 → 2147483647    | Fixed seed for reproducible MLP/attention initialization (same seed = same refinement every run) | Any fixed number for consistency — change for different "flavors" |
+
