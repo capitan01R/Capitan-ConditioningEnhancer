@@ -17,6 +17,10 @@ Or
 
 git clone https://github.com/capitan01R/Capitan-ConditioningEnhancer.git
 
+Or
+
+Simply install via Comfyui Manager: Capitan-ConditioningEnhancer
+
 restart ComfyUI or reload custom nodes
 
 No dependencies.
