@@ -28,7 +28,7 @@ Documentation = "https://github.com/capitan01R/Capitan-ConditioningEnhancer/wiki
 "Bug Tracker" = "https://github.com/capitan01R/Capitan-ConditioningEnhancer/issues"
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "capitan01R"
 DisplayName = "Capitan-ConditioningEnhancer"
 Icon = ""
 includes = [] 
