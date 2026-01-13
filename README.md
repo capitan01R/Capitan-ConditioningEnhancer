@@ -69,8 +69,9 @@ High strength (>0.4) + high mlp_hidden_mult + self-attention → rainbow artifac
 Very high mult (60+) needs extremely low strength (≤0.05).
 Always test same seed first. Negative strength + high mult usually safer than positive.
 
+-------------------------------------------------------------------------------------------------------------------
 
-### Update: Added Capitan Advanced Enhancer (v1.1)
+### Update: Added Capitan Advanced Enhancer (v1.0.1)
 
 **The original Conditioning Enhancer (Basic)** remains completely untouched — only optional seed support was added for reproducible initialization (default 42).
 
