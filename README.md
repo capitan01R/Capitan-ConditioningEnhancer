@@ -26,10 +26,10 @@ restart ComfyUI or reload custom nodes
 No dependencies.
 ## Placement
 After CLIP Text Encode (Prompt) → before KSampler.
-![](images/node.png)
+![](images/node_.png)
 
 stack method:
-![](images/node2.png)
+![](images/node_2.png)
 
 ## Grid examples:
 ![](images/horizontal_tiger_grid.png)
@@ -106,7 +106,7 @@ The node also includes built-in safety (clamping + dynamic residual scaling) to 
 
 This update keeps the original Basic node unchanged (except for optional seed) and adds advanced control for users who want to push detail retention harder.
 
-![](images/node_3.png)
+![](images/node3.png)
 
 
 ## Grid examples:
