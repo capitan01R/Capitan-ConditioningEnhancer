@@ -1,7 +1,5 @@
 """
-Conditioner Pack for ComfyUI
-- Basic Conditioning Enhancer
-- Capitan Advanced Enhancer
+Conditioning Enhancer Pack
 """
 
 from .enhancer import ConditioningEnhancer
@@ -13,8 +11,8 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ConditioningEnhancer": "Conditioning Enhancer (Basic)",
+    "ConditioningEnhancer": "Capitan Enhancer (Basic)",
     "CapitanAdvancedEnhancer": "Capitan Advanced Enhancer",
 }
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
