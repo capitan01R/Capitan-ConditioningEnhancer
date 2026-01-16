@@ -20,7 +20,7 @@ class CapitanAdvancedEnhancer:
                 "high_pass_filter": ("BOOLEAN", {"default": False}),
                 "normalize": ("BOOLEAN", {"default": True}),
                 "add_self_attention": ("BOOLEAN", {"default": False}),
-                "mlp_hidden_mult": ("INT", {"default": 8, "min": 1, "max": 100, "step": 1}),
+                "mlp_hidden_mult": ("INT", {"default": 8, "min": 1, "max": 200, "step": 1}),
                 "seed": ("INT", {"default": 42, "min": 0, "max": 2147483647, "step": 1}),
                 "low_vram": ("BOOLEAN", {"default": False}),
                 "device": (devices, {"default": "auto"}),
@@ -121,3 +121,4 @@ class CapitanAdvancedEnhancer:
 
 NODE_CLASS_MAPPINGS = {"CapitanAdvancedEnhancer": CapitanAdvancedEnhancer}
 NODE_DISPLAY_NAME_MAPPINGS = {"CapitanAdvancedEnhancer": "Capitan Advanced Enhancer"}
+
