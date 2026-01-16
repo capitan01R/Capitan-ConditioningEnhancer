@@ -16,7 +16,7 @@ class ConditioningEnhancer:
                 "enhance_strength": ("FLOAT", {"default": 0.0, "min": -3.0, "max": 2.0, "step": 0.05}),
                 "normalize": ("BOOLEAN", {"default": True}),
                 "add_self_attention": ("BOOLEAN", {"default": False}),
-                "mlp_hidden_mult": ("INT", {"default": 2, "min": 1, "max": 100, "step": 1}),
+                "mlp_hidden_mult": ("INT", {"default": 2, "min": 1, "max": 200, "step": 1}),
                 "seed": ("INT", {"default": 42, "min": 0, "max": 2147483647, "step": 1}),
                 "low_vram": ("BOOLEAN", {"default": False}),
                 "device": (devices, {"default": "auto"}),
@@ -94,3 +94,4 @@ class ConditioningEnhancer:
 
 NODE_CLASS_MAPPINGS = {"ConditioningEnhancer": ConditioningEnhancer}
 NODE_DISPLAY_NAME_MAPPINGS = {"ConditioningEnhancer": "Capitan Conditioning Enhancer (basic)"}
+
