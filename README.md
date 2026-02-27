@@ -1,4 +1,7 @@
 ## Capitan Conditioning Enhancer (basic)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg)](https://buymeacoffee.com/capitan01r)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Lightweight post-processing node for Qwen3-4B conditioning in Z-Image Turbo workflows.
 Refines the 2560-dim CONDITIONING from native Qwen3-4B text encoder with:
 
